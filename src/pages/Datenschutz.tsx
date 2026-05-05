@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
+import Navigation from "../components/Navigation";
 
 export default function Datenschutz() {
   useEffect(() => {
@@ -8,28 +9,7 @@ export default function Datenschutz() {
 
   return (
     <div className="min-h-screen bg-[#ffffff] font-sans text-[#1a1a1a] selection:bg-[#1a1a1a] selection:text-white flex flex-col">
-      <nav className="w-full bg-sky-200/30 backdrop-blur-md shadow-sm py-4 text-black z-50">
-        <div className="w-full flex justify-center items-center px-6 md:px-12">
-          <div className="hidden md:flex items-center space-x-4 lg:space-x-8 text-[10px] lg:text-xs tracking-widest uppercase font-bold drop-shadow-md">
-            <Link to="/#hochzeiten" className="hover:opacity-70 transition-opacity">Hochzeiten</Link>
-            <Link to="/#ueber-mich" className="hover:opacity-70 transition-opacity whitespace-nowrap">Über mich</Link>
-            
-            <Link to="/" className="font-sans text-xl lg:text-3xl tracking-tight px-2 lg:px-8 drop-shadow-md flex items-center">
-              <span className="font-semibold">HOCHZEITS</span>
-              <span className="font-black">SERVICEDE</span>
-            </Link>
-            
-            <Link to="/#kontakt" className="hover:opacity-70 transition-opacity">Kontakt</Link>
-            <Link to="/impressum" className="hover:opacity-70 transition-opacity">Impressum</Link>
-            <Link to="/datenschutz" className="hover:opacity-70 transition-opacity">Datenschutz</Link>
-          </div>
-          
-          <Link to="/" className="md:hidden font-sans text-xl tracking-tight drop-shadow-md flex items-center">
-             <span className="font-semibold">HOCHZEITS</span>
-             <span className="font-black">SERVICEDE</span>
-          </Link>
-        </div>
-      </nav>
+      <Navigation transparentTop={false} />
 
       <main className="flex-1 py-32 px-6 md:px-12 max-w-4xl mx-auto w-full">
         <h1 className="text-4xl md:text-5xl lg:text-6xl mb-12 font-serif tracking-tight italic text-[#1a1a1a]" style={{ fontFamily: "'Georgia', serif" }}>

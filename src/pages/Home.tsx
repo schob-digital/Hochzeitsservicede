@@ -1,7 +1,8 @@
 import { motion } from "motion/react";
-import { Menu, ChevronDown } from "lucide-react";
-import { useState, useEffect } from "react";
+import { ChevronDown } from "lucide-react";
+import { useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
+import Navigation from "../components/Navigation";
 
 import boatImg from "../Foto/boat.png";
 import castleImg from "../Foto/castle.PNG";
@@ -15,7 +16,6 @@ import img3671 from "../Foto/IMG_3671.PNG";
 import sunsetImg from "../Foto/sunset.png";
 
 export default function Home() {
-  const [isScrolled, setIsScrolled] = useState(false);
   const location = useLocation();
 
   // Handle hash scrolling when navigating back from other pages
@@ -32,53 +32,9 @@ export default function Home() {
     }
   }, [location]);
 
-  // Handle transparent to solid navbar transition on scroll
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
-    };
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
   return (
     <div className="min-h-screen bg-[#ffffff] font-sans text-[#1a1a1a] overflow-x-hidden selection:bg-[#1a1a1a] selection:text-white">
-      {/* Navigation */}
-      <nav
-        className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ease-in-out ${isScrolled
-          ? "bg-sky-200/30 backdrop-blur-md shadow-sm py-4 text-black"
-          : "bg-transparent py-8 text-white"
-          }`}
-      >
-        <div className="w-full flex justify-center items-center px-6 md:px-12">
-          {/* Mobile Menu Button - keep for mobile */}
-          <div className="md:hidden absolute left-6 top-1/2 -translate-y-1/2">
-            <button className="hover:opacity-70 transition-opacity">
-              <Menu size={24} />
-              <span className="sr-only">Menü</span>
-            </button>
-          </div>
-
-          <div className="hidden md:flex items-center space-x-4 lg:space-x-8 text-[10px] lg:text-xs tracking-widest uppercase font-bold drop-shadow-md">
-            <a href="#hochzeiten" className="hover:opacity-70 transition-opacity">Hochzeiten</a>
-            <a href="#ueber-mich" className="hover:opacity-70 transition-opacity whitespace-nowrap">Über mich</a>
-
-            <a href="#" className="font-sans text-xl lg:text-3xl tracking-tight px-2 lg:px-8 drop-shadow-md flex items-center">
-              <span className="font-semibold">HOCHZEITS</span>
-              <span className="font-black">SERVICEDE</span>
-            </a>
-
-            <a href="#kontakt" className="hover:opacity-70 transition-opacity">Kontakt</a>
-            <Link to="/impressum" className="hover:opacity-70 transition-opacity">Impressum</Link>
-            <Link to="/datenschutz" className="hover:opacity-70 transition-opacity">Datenschutz</Link>
-          </div>
-
-          <a href="#" className="md:hidden font-sans text-xl tracking-tight drop-shadow-md flex items-center">
-            <span className="font-semibold">HOCHZEITS</span>
-            <span className="font-black">SERVICEDE</span>
-          </a>
-        </div>
-      </nav>
+      <Navigation transparentTop={true} />
 
       {/* Hero Section */}
       <section className="relative h-screen w-full overflow-hidden flex flex-col items-center justify-center">
